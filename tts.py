@@ -4,6 +4,7 @@ from gtts import gTTS
 import playsound
 import os
 import sys
+from colorama import Fore
 
 # TODO python3 -m pip install -U nuitka
 # TODO sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-4.0
@@ -11,10 +12,14 @@ import sys
 # TODO pip3 install pycairo
 # TODO pip3 install PyGObject
 
-tts = gTTS(text=sys.argv[1], lang='en')
+if len(sys.argv) < 2:
+    print(Fore.RED, "Please use the program like this:")
+    print(Fore.CYAN, "tts \"Text to be converted to speech\"")
+else:
+    tts = gTTS(text=sys.argv[1], lang='en')
 
-tts.save('/tmp/file.mp3')
+    tts.save('/tmp/file.mp3')
 
-playsound.playsound('/tmp/file.mp3', True)
+    playsound.playsound('/tmp/file.mp3', True)
 
-os.remove("/tmp/file.mp3")
+    os.remove("/tmp/file.mp3")

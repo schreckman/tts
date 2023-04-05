@@ -1,20 +1,13 @@
-all: pre-build build deploy clean
+all: dependencies deploy
 	echo "\n\nprogram was been copied to /usr/bin/tts"
 
-pre-build:
-	python3 -m pip install -U nuitka
+dependencies:
 	sudo apt install python3-gi python3-gi-cairo gir1.2-gtk-4.0
 	sudo apt install libgirepository1.0-dev gcc libcairo2-dev pkg-config python3-dev gir1.2-gtk-4.0
-	pip3 install pycairo
-	pip3 install PyGObject
+	sudo apt-get install libgstreamer1.0-dev libgstreamer1.0-0 gstreamer1.0-tools gstreamer1.0-x
+	sudo apt-get install libglib2.0-0 libglib2.0-bin
+	sudo apt-get install gstreamer-1.0
 	pip install -r requirements.txt
-
-build:
-	python3 -m nuitka tts.py
-	mv tts.bin tts
 
 deploy:
 	sudo mv tts /usr/bin/
-
-clean:
-	rm -rf tts.build

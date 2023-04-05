@@ -15,7 +15,7 @@ Go to the project directory
   cd tts
 ```
 
-Install dependencies
+Install dependencies and moves program to /usr/bin
 
 ```bash
   make

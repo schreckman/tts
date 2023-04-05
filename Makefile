@@ -10,4 +10,4 @@ dependencies:
 	pip install -r requirements.txt
 
 deploy:
-	sudo mv tts /usr/bin/
+	sudo cp tts /usr/bin/
